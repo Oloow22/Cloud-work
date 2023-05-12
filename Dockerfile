@@ -1,19 +1,16 @@
 FROM python:3.11-alpine
 
-EXPOSE 8000
+RUN mkdir /code
 
-ENV WORKING_DIR /app
+WORKDIR /code
 
 # Python dependencies
-COPY requirements.txt .
+COPY docker/requirements.txt /code
 RUN pip install --no-cache-dir -r requirements.txt
-
-WORKDIR $WORKING_DIR
+EXPOSE 8000
 
 # Project files
-COPY manage.py $WORKING_DIR/manage.py
-COPY blog $WORKING_DIR/blog
-COPY mysite $WORKING_DIR/mysite
+COPY . /code/
 
 # Run migrations, and load the database with fixtures
 RUN python manage.py migrate && python manage.py loaddata users posts comments
