@@ -28,9 +28,3 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cloud-work:latest
-      -
-        name: Deploy to GCP with App Engine
-        run: python manage.py collectstatic
-        run: docker-compose -f docker-compose-deploy.yml run --rm gcloud sh -c "gcloud app deploy --project blog-website-386414
-
-
