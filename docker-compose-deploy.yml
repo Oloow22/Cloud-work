@@ -1,0 +1,15 @@
+version: '3.11-alpine'
+
+services:
+  gcloud:
+    image: google/cloud-sdk:430.0.0
+    volumes:
+      - gcp-creds:/creds
+      - .:/mysite
+      - ./static:/static
+    working_dir: /mysite
+    environment:
+      - CLOUDSDK_CONFIG=/creds
+
+volumes:
+  gcp-creds:
