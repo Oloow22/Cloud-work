@@ -121,8 +121,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'blog/static'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
 ACCOUNT_LOGOUT_REDIRECT_URL = "/blog"

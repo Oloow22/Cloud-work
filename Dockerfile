@@ -5,6 +5,7 @@ WORKDIR /mysite
 # Python dependencies
 COPY /requirements.txt /mysite/
 RUN pip install --no-cache-dir -r requirements.txt
+RUN py manage.py collectstatic --noinput
 
 # Project files
 COPY ./mysite /mysite/
