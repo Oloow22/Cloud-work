@@ -28,3 +28,12 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/cloud-work:latest
+      -
+        name: Deploy to heroku
+        uses: actions/checkout@v2
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "djangoblogapp"
+          heroku_email: "audreynakate222@gmail.com"
+          usedocker: true
