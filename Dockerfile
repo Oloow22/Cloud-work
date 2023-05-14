@@ -8,7 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Project files
 COPY ./mysite /mysite/
-COPY static ./static
 
 # Run migrations, and load the database with fixtures
 RUN python manage.py migrate && python manage.py loaddata users posts comments
